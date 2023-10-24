@@ -1,14 +1,20 @@
 <template>
 	<div id="menubar_style" class="d-flex justify-content-between">
 		<div class="d-flex align-items-center">
-			<span class="menubar_button d-flex align-items-center px-2">Manga List</span>
-			<span class="menubar_button d-flex align-items-center px-2">Add Manga</span>
-			<span class="menubar_button d-flex align-items-center px-2">Community</span>
-			<span class="menubar_button d-flex align-items-center px-2">Read</span>
-			<span class="menubar_button d-flex align-items-center px-2">Help</span>
+			<span class="menubar_button d-flex align-items-center px-3">Manga List</span>
+			<span class="menubar_button d-flex align-items-center px-3">Add Manga</span>
+			<span class="menubar_button d-flex align-items-center px-3">Community</span>
+			<span class="menubar_button d-flex align-items-center px-3">Read</span>
+			<span class="menubar_button d-flex align-items-center px-3">Help</span>
 		</div>
 		<div class="d-flex align-items-center">
-			<input type="text" class="menubar_search_style m-1 border round-3" placeholder="Search Manga, Anime, and more...">
+			<div>
+				<button @click="toggleGenre" class="menubar_genre_style mt-1 mb-1 ms-2">All</button>
+				<div v-if="isGenreOpen" class="dropmenu_menu">
+					<h1 style="color: white;">Hello?</h1>
+				</div>
+			</div>
+			<input type="text" class="menubar_search_style mt-1 mb-1 me-2 border round-3" placeholder="Search Manga, Anime, and more..." />
 		</div>
 	</div>
 </template>
@@ -19,10 +25,14 @@ export default {
 	data() {
 		return {
 			// Your data properties here
+			isGenreOpen: false
 		};
 	},
 	methods: {
 		// Your methods here
+		toggleGenre() {
+			this.isGenreOpen = !this.isGenreOpen;
+		}
 	},
 };
 </script>
@@ -38,12 +48,25 @@ export default {
 	color: white;
 	font-weight: bold;
 	background-color: black;
-	height: 30px;
-	font-size: medium;
+	font-size: 15px;
 }
 
 .menubar_search_style {
 	width: 25rem;
-	border-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-size: small;
+}
+.menubar_genre_style {
+	width: 5rem;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	font-size: small;
+}
+.dropmenu_menu {
+	display: none;
+}
+  .dropmenu_menu.show {
+    display: block;
 }
 </style>
