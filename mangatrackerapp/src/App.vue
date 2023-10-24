@@ -21,7 +21,7 @@ export default {
 
 <style>
 #manga_stash_style {
-  background-color: #B9B4C71;
+  background-color: #B9B4C7;
 }
 #app_style_dimension {
   max-width: 1062px;
