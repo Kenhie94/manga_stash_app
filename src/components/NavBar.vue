@@ -31,7 +31,7 @@ export default {
 /* Custom Font Styling */
 .title_font {
   font-family: BananaYeti, serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 /* Button Styling */
@@ -45,19 +45,19 @@ export default {
 }
 
 .login_button:hover {
-	background-color: #b9b4c7;
-}
+	background-color: #80B3FF;
+  }
 
 .register_button {
 	width: 3cm;
 	height: 30px;
 	border: 2px solid black;
-	background-color: #352f44;
+	background-color: #687EFF;
 	color: white;
   font-weight: bold;
 }
 
 .register_button:hover {
-	background-color: #b9b4c7;
+	background-color: #80B3FF;
 }
 </style>
