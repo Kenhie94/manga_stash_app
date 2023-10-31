@@ -1,24 +1,43 @@
-!<template>
-  <div>
-    <!-- Your Vue template code here -->
-    <h1>Add Manga</h1>
+<template>
+  <div id="app">
+    <div class="wrapper">
+      <header class="app_style_dimension mx-auto">
+        <NavBar />
+      </header>
+      <div id="manga_stash_style">
+        <div class="app_style_dimension mx-auto">
+          <MenuBar />
+        </div>
+        <body class="app_style_dimension mx-auto">
+          <span>Add Manga</span>
+        </body>
+      </div>
+    </div>
+    <footer>
+      <div class="app_style_dimension mx-auto">
+        <FooterBar />
+      </div>
+    </footer>
   </div>
+  <RouterView />
 </template>
 
 <script>
+import NavBar from "../components/NavBar.vue";
+import FooterBar from "../components/FooterBar.vue";
+import MenuBar from "../components/MenuBar.vue";
+
 export default {
-  name: 'MyComponent',
-  data() {
-    return {
-      // Your data properties here
-    };
-  },
-  methods: {
-    // Your methods here
+  name: "App",
+  components: {
+    NavBar,
+    MenuBar,
+    FooterBar
   },
 };
 </script>
 
-<style scoped>
-/* Your component-specific styles here */
+<style>
+@import '../../public/css/font.css';
+@import '../../public/css/overview_style.css'
 </style>

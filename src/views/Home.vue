@@ -41,33 +41,5 @@ export default {
 
 <style>
 @import '../../public/css/font.css';
-
-body,
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-footer {
-  background-color: #687EFF;
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-#manga_stash_style {
-  background-color: #A0E9FF;
-}
-
-.app_style_dimension {
-  max-width: 1062px;
-}
-
-.wrapper {
-  flex: 1;
-}
+@import '../../public/css/overview_style.css'
 </style>

@@ -2,7 +2,7 @@
 	<div id="header_style">
 		<div class="d-flex flex-column">
 			<div class="d-flex justify-content-between align-items-center">
-				<div class="title_font"><span style="color: red;">M</span>anga<span style="color: red;">S</span>tash</div>
+				<router-link to="/" class="title_font"><span style="color: red;">M</span>anga<span style="color: red;">S</span>tash</router-link>
 				<div>
 					<button class="login_button">Login</button>
 					<button class="register_button mx-2">Register</button>
@@ -32,6 +32,8 @@ export default {
 .title_font {
   font-family: BananaYeti, serif;
   font-size: 2.5rem;
+  text-decoration: none;
+  color: black;
 }
 
 /* Button Styling */
