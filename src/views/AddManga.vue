@@ -25,13 +25,11 @@
 <script>
 import NavBar from "../components/NavBar.vue";
 import FooterBar from "../components/FooterBar.vue";
-import MenuBar from "../components/MenuBar.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
-    MenuBar,
     FooterBar
   },
 };
