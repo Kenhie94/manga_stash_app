@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
-import FooterBar from "../components/FooterBar.vue";
+import NavBar from "../components/layout/NavBar.vue";
+import FooterBar from "../components/layout/FooterBar.vue";
 
 export default {
   name: "App",
