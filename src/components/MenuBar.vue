@@ -2,8 +2,8 @@
 	<div id="menubar_style" class="d-flex justify-content-between">
 		<div class="d-flex align-items-center">
 			<span class="menubar_button d-flex align-items-center px-3">Manga List</span>
-			<span class="menubar_button d-flex align-items-center px-3">Add Manga</span>
-			<span class="menubar_button d-flex align-items-center px-3">Community</span>
+      <router-link to="/add" class="menubar_button d-flex align-items-center px-3">Add Manga</router-link>
+      <router-link to="/community" class="menubar_button d-flex align-items-center px-3">Community</router-link>
 			<span class="menubar_button d-flex align-items-center px-3">Read</span>
 			<span class="menubar_button d-flex align-items-center px-3">Help</span>
 		</div>
@@ -49,6 +49,7 @@ export default {
 	font-weight: bold;
 	background-color: black;
 	font-size: 15px;
+  text-decoration: none;
 }
 
 .menubar_search_style {
