@@ -13,7 +13,7 @@
 		</div>
 		<div id="menubar_style" class="d-flex justify-content-between">
 			<div class="d-flex align-items-center">
-				<span class="menubar_button d-flex align-items-center px-3">Manga List</span>
+        <router-link to="/list" class="menubar_button d-flex align-items-center px-3">Manga List</router-link>
 				<router-link to="/add" class="menubar_button d-flex align-items-center px-3">Add Manga</router-link>
 				<router-link to="/community" class="menubar_button d-flex align-items-center px-3">Community</router-link>
 				<span class="menubar_button d-flex align-items-center px-3">Read</span>

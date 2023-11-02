@@ -2,13 +2,15 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomePage from './views/HomePage.vue';
+import MangaListPage from './views/MangaListPage.vue'
 import AddMangaPage from './views/AddMangaPage.vue';
 import CommunityPage from './views/CommunityPage.vue';
 
 const routes = [
   { path: '/', component: HomePage },
+  { path: '/list', component: MangaListPage},
   { path: '/add', component: AddMangaPage },
-  { path: '/community', component: CommunityPage }
+  { path: '/community', component: CommunityPage },
 ];
 
 const router = createRouter({

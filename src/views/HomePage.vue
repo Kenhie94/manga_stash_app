@@ -36,5 +36,5 @@ export default {
 
 <style>
 @import '../../public/css/font.css';
-@import '../../public/css/overview_style.css'
+@import '../../public/css/overview_style.css';
 </style>
