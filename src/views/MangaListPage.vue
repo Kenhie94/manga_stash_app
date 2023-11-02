@@ -5,16 +5,16 @@
         <NavBar />
       </header>
     </div>
-    <div>
-      <body>
-        <ul>
+    <body>
+      <div>
+        <ul class="d-flex">
           <li>a</li>
           <li>a</li>
           <li>a</li>
           <li>a</li>
         </ul>
-      </body>
-    </div>
+      </div>
+    </body>
     <footer>
       <div class="app_style_dimension mx-auto">
         <FooterBar />
@@ -47,4 +47,6 @@ export default {
 <style>
 @import "../../public/css/font.css";
 @import "../../public/css/overview_style.css";
+
+
 </style>
