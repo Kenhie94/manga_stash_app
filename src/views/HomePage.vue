@@ -6,8 +6,13 @@
       </header>
       <div id="manga_stash_style">
         <body class="app_style_dimension mx-auto">
-          <span><MiniMangaDisplayVue /></span>
-        </body> 
+          <span>
+            <MiniMangaDisplayVue />
+          </span>
+          <span>
+            <MangaDexService />
+          </span>
+        </body>
       </div>
     </div>
     <footer>
@@ -22,7 +27,8 @@
 <script>
 import NavBar from "../components/layout/NavBar.vue";
 import FooterBar from "../components/layout/FooterBar.vue";
-import MiniMangaDisplayVue from "@/components/MiniMangaDisplay.vue";
+import MiniMangaDisplayVue from "../components/MiniMangaDisplay.vue";
+import MangaDexService from "../services/MangaDexService.vue";
 
 export default {
   name: "App",
@@ -30,6 +36,7 @@ export default {
     NavBar,
     MiniMangaDisplayVue,
     FooterBar,
+    MangaDexService,
   },
 };
 </script>
