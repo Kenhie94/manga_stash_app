@@ -28,7 +28,7 @@
 import NavBar from "../components/layout/NavBar.vue";
 import FooterBar from "../components/layout/FooterBar.vue";
 import MiniMangaDisplayVue from "../components/MiniMangaDisplay.vue";
-import MangaDexService from "../services/mangadexService.vue"
+import MangaDexService from "../services/MangaDexService.vue"
 
 export default {
   name: "App",
