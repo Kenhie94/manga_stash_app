@@ -9,6 +9,9 @@
           <span>
             <MiniMangaDisplayVue />
           </span>
+          <span>
+            {{ data }}
+          </span>
         </body>
       </div>
     </div>
@@ -25,6 +28,7 @@
 import NavBar from "../components/layout/NavBar.vue";
 import FooterBar from "../components/layout/FooterBar.vue";
 import MiniMangaDisplayVue from "../components/MiniMangaDisplay.vue";
+import {displayDB} from "../services/mangadexService"
 
 export default {
   name: "App",
@@ -33,6 +37,14 @@ export default {
     MiniMangaDisplayVue,
     FooterBar,
   },
+  data() {
+    return {
+      data: ""
+    };
+  },
+  mounted() {
+    this.data = displayDB();
+  }
 };
 </script>
 
