@@ -9,9 +9,6 @@
           <span>
             <MiniMangaDisplayVue />
           </span>
-          <span>
-            <MangaDexService />
-          </span>
         </body>
       </div>
     </div>
@@ -28,7 +25,6 @@
 import NavBar from "../components/layout/NavBar.vue";
 import FooterBar from "../components/layout/FooterBar.vue";
 import MiniMangaDisplayVue from "../components/MiniMangaDisplay.vue";
-import MangaDexService from "../services/MangaDexService.vue"
 
 export default {
   name: "App",
@@ -36,7 +32,6 @@ export default {
     NavBar,
     MiniMangaDisplayVue,
     FooterBar,
-    MangaDexService,
   },
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p v-if="mangaData"> {{ mangaData }}</p>
+    <!-- Your component's content -->
+    <p v-if="mangaData">{{ mangaData }}</p>
   </div>
 </template>
 
