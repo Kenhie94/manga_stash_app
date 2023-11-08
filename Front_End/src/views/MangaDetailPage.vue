@@ -32,7 +32,7 @@ import FooterBar from "@/components/layout/FooterBar.vue";
 export default {
 	data() {
 		return {
-			mangaDetails: null,
+			mangaDetails: null
 		};
 	},
 	components: {
