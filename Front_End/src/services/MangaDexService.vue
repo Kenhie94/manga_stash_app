@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Manga Details</h1>
     <div v-if="mangaDetails">
       <h2>{{ mangaDetails.attributes.title.en }}</h2>
       <p>{{ mangaDetails.attributes.description.en }}</p>

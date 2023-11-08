@@ -9,6 +9,7 @@
           <span>
             <MiniMangaDisplayVue />
           </span>
+          <h1>Data from MangaDex servers</h1>
           <span>
             <MangaDexService />
           </span>
