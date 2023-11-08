@@ -1,31 +1,53 @@
 <template>
-	<div v-if="mangaDetails">
-		<h2>{{ mangaDetails[0].attributes.title.en }}</h2>
-		<p>{{	mangaDetails[0].attributes.description.en }}</p>
-	</div>
-	<div v-else>
-		<p>Loading manga details...</p>
+	<div id="app">
+		<div class="wrapper">
+			<header class="app_style_dimension mx-auto">
+				<NavBar />
+			</header>
+			<div id="manga_stash_style">
+				<body class="app_style_dimension mx-auto">
+					<div v-if="mangaDetails">
+						<h2>{{ mangaDetails[0].attributes.title.en }}</h2>
+						<span>{{ mangaDetails[0].attributes.description.en }}</span>
+					</div>
+					<div v-else>
+						<p>Loading manga details...</p>
+					</div>
+				</body>
+			</div>
+		</div>
+		<footer>
+			<div class="app_style_dimension mx-auto">
+				<FooterBar />
+			</div>
+		</footer>
 	</div>
 </template>
 
 <script>
 import axios from "axios";
+import NavBar from "@/components/layout/NavBar.vue";
+import FooterBar from "@/components/layout/FooterBar.vue";
 
 export default {
 	data() {
 		return {
 			mangaDetails: null,
-		}
+		};
+	},
+	components: {
+		NavBar,
+		FooterBar,
 	},
 	mounted() {
-		const apiUrl = 'https://api.mangadex.org/manga/';
+		const apiUrl = "https://api.mangadex.org/manga/";
 		const searchTitle = this.$route.params.id;
-	
+
 		axios
 			.get(apiUrl, {
 				params: {
-					title: searchTitle
-				}
+					title: searchTitle,
+				},
 			})
 			.then(response => {
 				this.mangaDetails = response.data.data;
@@ -40,7 +62,6 @@ export default {
 </script>
 
 <style>
-/* Your component's styles */
+@import "../../public/css/font.css";
+@import "../../public/css/overview_style.css";
 </style>
-
-// 1ee97895-4796-4bcf-bcd1-5ef99c011f8b
