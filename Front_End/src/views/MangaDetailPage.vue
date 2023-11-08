@@ -1,6 +1,7 @@
 <template>
 	<div v-if="mangaDetails">
-		<h2>{{ mangaDetails.attributes.title.en }}</h2>
+		<h2>{{ mangaDetails[0].attributes.title.en }}</h2>
+		<p>{{	mangaDetails[0].attributes.description.en }}</p>
 	</div>
 	<div v-else>
 		<p>Loading manga details...</p>
@@ -17,9 +18,15 @@ export default {
 		}
 	},
 	mounted() {
-		const mangaId = this.$route.params.id; // Replace 'YOUR_MANGA_ID' with the ID of the manga you want to fetch
+		const apiUrl = 'https://api.mangadex.org/manga/';
+		const searchTitle = this.$route.params.id;
+	
 		axios
-			.get(`https://api.mangadex.org/manga/${mangaId}`)
+			.get(apiUrl, {
+				params: {
+					title: searchTitle
+				}
+			})
 			.then(response => {
 				this.mangaDetails = response.data.data;
 				console.log("Manga Details:", this.mangaDetails);
