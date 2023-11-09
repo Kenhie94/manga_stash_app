@@ -7,8 +7,8 @@
 			<div id="manga_stash_style">
 				<body class="app_style_dimension mx-auto">
 					<div v-if="mangaDetails">
-						<h2>{{ mangaDetails[0].attributes.title.en }}</h2>
-						<span>{{ mangaDetails[0].attributes.description.en }}</span>
+            <h1>{{ mangaDetails[0].attributes.title.en }}</h1>
+						<pre>{{ mangaDetails[0] }}</pre>
 					</div>
 					<div v-else>
 						<p>Loading manga details...</p>
