@@ -14,6 +14,39 @@ const mangaSchema = new mongoose.Schema({
   },
   title: {
     type: String,
+  },
+  altTitles: [{
+    type: Array,
+  }],
+  description: {
+    type: Array,
+  },
+  originalLanguage: {
+    type: String,
+  },
+  lastVolume: {
+    type: String,
+  },
+  lastChapter: {
+    type: String,
+  },
+  publicationDemographic: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
+  year: {
+    type: Number,
+  },
+  contentRating: {
+    type: String,
+  },
+  tags: [{
+    type: Array,
+  }],
+  links: {
+    type: Array,
   }
 });
 const MangaDB = mongoose.model("MangaDB", mangaSchema);
@@ -29,6 +62,17 @@ async function fetchDataAndStore() {
     const newData = new MangaDB({
       type: apiData.type,
       title: apiData.attributes.title.en,
+      altTitles: apiData.attributes.altTitles,
+      description: apiData.attributes.description,
+      originalLanguage: apiData.attributes.originalLanguage,
+      lastVolume: apiData.attributes.lastVolume,
+      lastChapter: apiData.attributes.lastChapter,
+      publicationDemographic: apiData.attributes.publicationDemographic,
+      status: apiData.attributes.status,
+      year: apiData.attributes.year,
+      contentRating: apiData.attributes.contentRating,
+      tags: apiData.attributes.tags,
+      links: apiData.attributes.links,
     });
 
     const savedData = await newData.save(); // Save the new document to your database
