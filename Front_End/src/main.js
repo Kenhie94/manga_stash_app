@@ -8,6 +8,7 @@ import HomePage from './views/HomePage.vue';
 import MangaListPage from './views/MangaListPage.vue'
 import AddMangaPage from './views/AddMangaPage.vue';
 import CommunityPage from './views/CommunityPage.vue';
+import MangaDetailPage from './views/MangaDetailPage.vue'
 
 // *Routes*
 // Connecting routing pages
@@ -16,6 +17,7 @@ const routes = [
   { path: '/list', component: MangaListPage},
   { path: '/add', component: AddMangaPage },
   { path: '/community', component: CommunityPage },
+  { path: '/manga/:id', name: 'Manga', component: MangaDetailPage },
 ];
 
 const router = createRouter({

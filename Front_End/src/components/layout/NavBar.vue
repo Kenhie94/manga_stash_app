@@ -13,7 +13,7 @@
 		</div>
 		<div id="menubar_style" class="d-flex justify-content-between">
 			<div class="d-flex align-items-center">
-        <router-link to="/list" class="menubar_button d-flex align-items-center px-3">Manga List</router-link>
+				<router-link to="/list" class="menubar_button d-flex align-items-center px-3">Manga List</router-link>
 				<router-link to="/add" class="menubar_button d-flex align-items-center px-3">Add Manga</router-link>
 				<router-link to="/community" class="menubar_button d-flex align-items-center px-3">Community</router-link>
 				<span class="menubar_button d-flex align-items-center px-3">Read</span>
@@ -26,7 +26,10 @@
 						<h1 style="color: white">Hello?</h1>
 					</div>
 				</div>
-				<input type="text" class="menubar_search_style mt-1 mb-1 me-2 border round-3" placeholder="Search Manga, Anime, and more..." />
+				<form @submit.prevent="submitUserInput">
+					<input v-model="userInput" type="text" class="menubar_search_style mt-1 mb-1 me-2 border round-3" placeholder="Search Manga, Anime, and more..." />
+					<button type="submit">Search</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -38,11 +41,16 @@ export default {
 	data() {
 		return {
 			isGenreOpen: false,
+			userInput: "",
 		};
 	},
 	methods: {
 		toggleGenre() {
 			this.isGenreOpen = !this.isGenreOpen;
+		},
+		submitUserInput() {
+			console.log(this.userInput);
+			this.$router.push({name: 'Manga', params: {id: this.userInput}});
 		},
 	},
 };
@@ -96,7 +104,7 @@ export default {
 }
 
 .menubar_search_style {
-	width: 25rem;
+	width: 15rem;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	font-size: small;
