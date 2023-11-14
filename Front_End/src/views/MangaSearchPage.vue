@@ -6,7 +6,7 @@
       </header>
       <div id="manga_stash_style">
         <body class="app_style_dimension mx-auto">
-          <h1>Multiple Manga Title:</h1>
+          <h1 class="d-flex justify-content-center">Related Search of: {{ upperCase(searchTitle) }}</h1>
           <div v-for="manga in mangaDetails" :key="manga">
             <span>{{ manga.attributes.title.en }}</span>
           </div>
@@ -35,12 +35,20 @@ export default {
   },
   data() {
     return {
-      mangaDetails: null
+      mangaDetails: null,
+      searchTitle: "",
     };
+  },
+  methods: {
+    upperCase(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
   },
   mounted() {
     const apiUrl = 'https://api.mangadex.org/manga/';
     const searchTitle = this.$route.params.searchId
+
+    this.searchTitle = searchTitle;
 
     axios
       .get(apiUrl, {
