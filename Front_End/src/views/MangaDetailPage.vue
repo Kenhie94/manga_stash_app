@@ -6,10 +6,7 @@
       </header>
       <div id="manga_stash_style">
         <body class="app_style_dimension mx-auto">
-          <div v-for="manga in mangaDetails" :key="manga">
-            <h1>{{ manga.attributes.title.en }}</h1>
-            <!-- <pre>{{ manga }}</pre> -->
-          </div>
+          <pre>{{ mangaDetails }}</pre>
         </body>
       </div>
     </div>
@@ -37,20 +34,14 @@ export default {
       mangaDetails: null
     };
   },
-
   mounted() {
     const apiUrl = "https://api.mangadex.org/manga/";
-    const searchTitle = this.$route.params.id;
+    const searchId = this.$route.params.id;
 
     axios
-      .get(apiUrl, {
-        params: {
-          title: searchTitle,
-        },
-      })
+      .get(`${apiUrl}${searchId}`)
       .then(response => {
         this.mangaDetails = response.data.data;
-        console.log(response)
         console.log("Manga Details:", this.mangaDetails);
       })
       .catch(error => {
