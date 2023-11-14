@@ -11,7 +11,7 @@
 					</span>
 					<h1>Data from MangaDex servers</h1>
 					<span>
-						<MangaDexService />
+						<!-- <MangaDexService /> -->
 					</span>
 				</body>
 			</div>
@@ -29,7 +29,7 @@
 import NavBar from "@/components/layout/NavBar.vue";
 import FooterBar from "@/components/layout/FooterBar.vue";
 import MiniMangaDisplayVue from "@/components/MiniMangaDisplay.vue";
-import MangaDexService from "@/services/MangaDexService.vue";
+// import MangaDexService from "@/services/MangaDexService.vue";
 
 export default {
 	name: "App",
@@ -37,7 +37,7 @@ export default {
 		NavBar,
 		MiniMangaDisplayVue,
 		FooterBar,
-		MangaDexService,
+		// MangaDexService,
 	},
 };
 </script>

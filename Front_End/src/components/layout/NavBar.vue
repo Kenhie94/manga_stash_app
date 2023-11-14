@@ -50,7 +50,7 @@ export default {
 		},
 		submitUserInput() {
 			console.log(this.userInput);
-			this.$router.push({name: 'Manga', params: {id: this.userInput}});
+			this.$router.push({name: 'MangaSearch', params: {searchId: this.userInput}});
 		},
 	},
 };

@@ -1,15 +1,15 @@
-!<template>
+<template>
   <div id="app">
     <div class="wrapper">
       <header class="app_style_dimension mx-auto">
         <NavBar />
       </header>
-      <div class="app_style_dimension mx-auto">
-        <body>
+      <div id="manga_stash_style">
+        <body class="app_style_dimension mx-auto">
           <h1>Multiple Manga Title:</h1>
-          <p>Blah blah blah</p>
-          <p>Blah blah blah</p>
-          <p>Blah blah blah</p>
+          <div v-for="manga in mangaDetails" :key="manga">
+            <span>{{ manga.attributes.title.en }}</span>
+          </div>
         </body>
       </div>
     </div>
@@ -23,28 +23,45 @@
 </template>
 
 <script>
-  import NavBar from '@/components/layout/NavBar.vue';
-  import FooterBar from '@/components/layout/FooterBar.vue';
+import NavBar from '@/components/layout/NavBar.vue';
+import FooterBar from '@/components/layout/FooterBar.vue';
+import axios from 'axios';
 
 export default {
   name: 'MangaSearchPage',
-  data() {
-    return {
-      // Your data properties here
-    };
-  },
   components: {
     NavBar,
     FooterBar,
   },
+  data() {
+    return {
+      mangaDetails: null
+    };
+  },
   mounted() {
-    const apiUrl = 'https://api'
-  }
+    const apiUrl = 'https://api.mangadex.org/manga/';
+    const searchTitle = this.$route.params.searchId
+
+    axios
+      .get(apiUrl, {
+        params: {
+          title: searchTitle,
+        },
+      })
+      .then(response => {
+        this.mangaDetails = response.data.data;
+        console.log(response)
+        console.log('Manga Details:', this.mangaDetails);
+      })
+      .catch(error => {
+        console.log('Error fetching manga list:', error);
+      });
+      console.log('Received ID:', this.$route.params.searchId);
+  },
 };
 </script>
 
 <style scoped>
 @import '../../public/css/font.css';
 @import '../../public/css/overview_style.css';
-/* Your component-specific styles here */
 </style>

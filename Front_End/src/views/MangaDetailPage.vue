@@ -1,27 +1,24 @@
 <template>
-	<div id="app">
-		<div class="wrapper">
-			<header class="app_style_dimension mx-auto">
-				<NavBar />
-			</header>
-			<div id="manga_stash_style">
-				<body class="app_style_dimension mx-auto">
-					<div v-if="mangaDetails">
-            <h1>{{ mangaDetails[0].attributes.title.en }}</h1>
-						<pre>{{ mangaDetails[0] }}</pre>
-					</div>
-					<div v-else>
-						<p>Loading manga details...</p>
-					</div>
-				</body>
-			</div>
-		</div>
-		<footer>
-			<div class="app_style_dimension mx-auto">
-				<FooterBar />
-			</div>
-		</footer>
-	</div>
+  <div id="app">
+    <div class="wrapper">
+      <header class="app_style_dimension mx-auto">
+        <NavBar />
+      </header>
+      <div id="manga_stash_style">
+        <body class="app_style_dimension mx-auto">
+          <div v-for="manga in mangaDetails" :key="manga">
+            <h1>{{ manga.attributes.title.en }}</h1>
+            <!-- <pre>{{ manga }}</pre> -->
+          </div>
+        </body>
+      </div>
+    </div>
+    <footer>
+      <div class="app_style_dimension mx-auto">
+        <FooterBar />
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -30,34 +27,37 @@ import NavBar from "@/components/layout/NavBar.vue";
 import FooterBar from "@/components/layout/FooterBar.vue";
 
 export default {
-	data() {
-		return {
-			mangaDetails: null
-		};
-	},
-	components: {
-		NavBar,
-		FooterBar,
-	},
-	mounted() {
-		const apiUrl = "https://api.mangadex.org/manga/";
-		const searchTitle = this.$route.params.id;
+  name: 'MangaDetailPage',
+  components: {
+    NavBar,
+    FooterBar,
+  },
+  data() {
+    return {
+      mangaDetails: null
+    };
+  },
 
-		axios
-			.get(apiUrl, {
-				params: {
-					title: searchTitle,
-				},
-			})
-			.then(response => {
-				this.mangaDetails = response.data.data;
-				console.log("Manga Details:", this.mangaDetails);
-			})
-			.catch(error => {
-				console.error("Error fetching manga details:", error);
-			});
-		console.log("Received ID:", this.$route.params.id);
-	},
+  mounted() {
+    const apiUrl = "https://api.mangadex.org/manga/";
+    const searchTitle = this.$route.params.id;
+
+    axios
+      .get(apiUrl, {
+        params: {
+          title: searchTitle,
+        },
+      })
+      .then(response => {
+        this.mangaDetails = response.data.data;
+        console.log(response)
+        console.log("Manga Details:", this.mangaDetails);
+      })
+      .catch(error => {
+        console.error("Error fetching manga details:", error);
+      });
+    console.log("Received ID:", this.$route.params.id);
+  },
 };
 </script>
 
