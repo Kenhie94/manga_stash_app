@@ -6,7 +6,11 @@
       </header>
       <div id="manga_stash_style">
         <body class="app_style_dimension mx-auto">
-          <pre>{{ mangaDetails }}</pre>
+          <div v-if="mangaDetails">
+            <h1 class="d-flex">Title: {{ mangaDetails.attributes.title.en }}</h1>
+            <img class="d-flex ms-5" :src="coverURL" alt="Manga Cover" v-if="coverURL" />
+            <span>Description: {{ mangaDetails.attributes.description.en }}</span>
+          </div>
         </body>
       </div>
     </div>
@@ -31,7 +35,8 @@ export default {
   },
   data() {
     return {
-      mangaDetails: null
+      mangaDetails: null,
+      coverURL: null,
     };
   },
   mounted() {
@@ -41,7 +46,12 @@ export default {
     axios
       .get(`${apiUrl}${searchId}`)
       .then(response => {
+        console.log(response.data.data.relationships);
+        // const coverURL = response.data.data.relationships.find(rel => rel.type === "cover_art").fileName
+        const coverURL = '5bb594c8-9551-4b35-9912-4541400a1067.jpg';
         this.mangaDetails = response.data.data;
+        this.coverURL = `https://mangadex.org/covers/${searchId}/${coverURL}`;
+        console.log('Cover Image URL:', this.coverURL);
         console.log("Manga Details:", this.mangaDetails);
       })
       .catch(error => {
@@ -55,4 +65,9 @@ export default {
 <style>
 @import "../../public/css/font.css";
 @import "../../public/css/overview_style.css";
+
+img {
+  width: 200px;
+  height: 284.766px;
+}
 </style>
