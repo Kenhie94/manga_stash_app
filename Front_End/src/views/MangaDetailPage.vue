@@ -7,9 +7,14 @@
 			<div id="manga_stash_style">
 				<body class="app_style_dimension mx-auto">
 					<div v-if="mangaDetails">
-						<h1 class="d-flex">Title: {{ mangaDetails.attributes.title.en }}</h1>
-						<img class="d-flex ms-5" :src="coverUrlId" alt="Manga Cover" v-if="coverUrlId" />
-						<span>Description: {{ mangaDetails.attributes.description.en }}</span>
+						<div class="d-flex p-3">
+							<img class="d-flex" :src="coverUrlId" alt="Manga Cover" v-if="coverUrlId" />
+							<div class="d-flex flex-column">
+								<h1 class="d-flex ps-4">{{ mangaDetails.attributes.title.en }}</h1>
+								<h2 class="d-flex ps-4" v-for="manga in mangaDetails.attributes.altTitles" :key="manga">{{ manga.en }}</h2>
+							</div>
+						</div>
+						<span class="d-flex ps-3">Description: {{ mangaDetails.attributes.description.en }}</span>
 					</div>
 				</body>
 			</div>
@@ -42,26 +47,23 @@ export default {
 	mounted() {
 		const apiUrl = "https://api.mangadex.org/";
 		const searchId = this.$route.params.id;
-    const coverUrlId = ""
 
 		axios
 			.get(`${apiUrl}/manga/${searchId}`)
 			.then(response => {
-				console.log(response.data.data.relationships);
 				const coverURL = response.data.data.relationships.find(rel => rel.type === "cover_art").id;
 
 				axios
 					.get(`${apiUrl}/cover/${coverURL}`)
 					.then(response => {
 						console.log(response.data.data.attributes.fileName);
-						this.coverUrlId = `https://mangadex.org/${searchId}/${coverURL}`;
-						console.log('This is the coverURL:', this.coverUrlId);
+						const coverUrlId = response.data.data.attributes.fileName;
+						this.coverUrlId = `https://mangadex.org/covers/${searchId}/${coverUrlId}`;
 					})
 					.catch(error => {
 						console.log("Error fetching manga cover art", error);
 					});
 				this.mangaDetails = response.data.data;
-				console.log("Cover Image URL:", this.coverURL);
 				console.log("Manga Details:", this.mangaDetails);
 			})
 			.catch(error => {
