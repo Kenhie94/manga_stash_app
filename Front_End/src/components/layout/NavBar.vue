@@ -11,12 +11,13 @@
     <div id="menubar_style" class="d-flex justify-content-between">
       <div class="d-flex align-items-center">
         <router-link to="/list" class="menubar_button d-flex align-items-center px-3">Manga List</router-link>
-        <span class="menubar_button d-flex align-items-center px-3">Read</span>
+        <span @click="showModal" class="read_button d-flex align-items-center px-3">Read</span>
         <router-link to="/about" class="menubar_button d-flex align-items-center px-3">About</router-link>
       </div>
       <div class="d-flex align-items-center">
         <div>
           <button @click="toggleGenre" class="menubar_genre_style mt-1 mb-1 ms-2">All</button>
+          <div class="overlay" :class="{ active: isModalVisible }"></div>
           <div v-if="isGenreOpen" class="dropmenu_menu">
             <h1 style="color: white">Hello?</h1>
           </div>
@@ -28,6 +29,9 @@
         </form>
       </div>
     </div>
+    <div v-if="isModalVisible" class="read_modal">
+      <h1>Hello</h1>
+    </div>
   </div>
 </template>
 
@@ -38,6 +42,7 @@ export default {
     return {
       isGenreOpen: false,
       userInput: "",
+      isModalVisible: false,
     };
   },
   methods: {
@@ -48,6 +53,14 @@ export default {
       console.log(this.userInput);
       this.$router.push({ name: 'MangaSearch', params: { searchId: this.userInput } });
     },
+    showModal() {
+      this.isModalVisible = !this.isModalVisible
+    },
+    redirectMangaDex() {
+      const urlRedirect = 'https://www.mangadex.org';
+      window.open(urlRedirect, '_blank');
+      this.confirmReadManga = false;
+    }
   },
 };
 </script>
@@ -100,6 +113,18 @@ export default {
   text-decoration: none;
 }
 
+.read_button {
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.read_button:hover {
+  cursor: pointer;
+}
+
 .menubar_search_style {
   width: 15rem;
   border-top-right-radius: 5px;
@@ -120,4 +145,30 @@ export default {
 
 .dropmenu_menu.show {
   display: block;
-}</style>
+}
+
+.read_modal {
+  position: fixed;
+  background: rgb(30, 30, 30);
+  color: white;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+</style>
