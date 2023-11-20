@@ -4,17 +4,17 @@
       <header class="app_style_dimension mx-auto">
         <NavBar />
       </header>
-    </div>
-    <body>
-      <div>
-        <ul class="d-flex">
-          <li>a</li>
-          <li>a</li>
-          <li>a</li>
-          <li>a</li>
-        </ul>
+      <div id="manga_stash_style">
+        <body class="app_style_dimension mx-auto">
+          <ul class="d-flex justify-content-center">
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+            <li>a</li>
+          </ul>
+        </body>
       </div>
-    </body>
+    </div>
     <footer>
       <div class="app_style_dimension mx-auto">
         <FooterBar />
@@ -47,6 +47,4 @@ export default {
 <style>
 @import "../../public/css/font.css";
 @import "../../public/css/overview_style.css";
-
-
 </style>

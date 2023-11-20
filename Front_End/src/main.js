@@ -6,8 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 import HomePage from './views/HomePage.vue';
 import MangaListPage from './views/MangaListPage.vue'
-import AddMangaPage from './views/AddMangaPage.vue';
-import CommunityPage from './views/CommunityPage.vue';
+import AboutPage from './views/AboutPage.vue'
 import MangaSearchPage from './views/MangaSearchPage';
 import MangaDetailPage from './views/MangaDetailPage.vue'
 
@@ -16,8 +15,7 @@ import MangaDetailPage from './views/MangaDetailPage.vue'
 const routes = [
   { path: '/', component: HomePage },
   { path: '/list', component: MangaListPage},
-  { path: '/add', component: AddMangaPage },
-  { path: '/community', component: CommunityPage },
+  { path: '/about', component: AboutPage},
   { path: '/manga/:searchId', name: 'MangaSearch', component: MangaSearchPage },
   { path: '/manga/:id', name: 'MangaDetail', component: MangaDetailPage },
 ];
