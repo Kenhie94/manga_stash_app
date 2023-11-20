@@ -17,10 +17,6 @@
       <div class="d-flex align-items-center">
         <div>
           <button @click="toggleGenre" class="menubar_genre_style mt-1 mb-1 ms-2">All</button>
-          <div class="overlay" :class="{ active: isModalVisible }"></div>
-          <div v-if="isGenreOpen" class="dropmenu_menu">
-            <h1 style="color: white">Hello?</h1>
-          </div>
         </div>
         <form @submit.prevent="submitUserInput">
           <input v-model="userInput" type="text" class="menubar_search_style mt-1 mb-1 me-2 border round-3"
@@ -29,8 +25,16 @@
         </form>
       </div>
     </div>
+    <div class="overlay" :class="{ active: isModalVisible }" @click="hideModal"></div>
     <div v-if="isModalVisible" class="read_modal">
-      <h1>Hello</h1>
+      <div class="d-flex flex-column p-3">
+        <h2 class="d-flex p-2">You are about to leave this page</h2>
+        <span class="d-flex p-2">A new tab will open to redirect you to MangaDex to read manga</span>
+        <div class="d-flex justify-content-end p-1">
+          <button class="d-flex m-1" @click="hideModal">Cancel</button>
+          <button class="d-flex m-1" @click="redirectMangaDex">Read Manga</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +46,7 @@ export default {
     return {
       isGenreOpen: false,
       userInput: "",
-      isModalVisible: false,
+      isModalVisible: true,
     };
   },
   methods: {
@@ -56,10 +60,19 @@ export default {
     showModal() {
       this.isModalVisible = !this.isModalVisible
     },
+    hideModal() {
+      this.isModalVisible = false;
+      document.removeEventListener('click', this.handleClickOutisde);
+    },
+    handleClickOutisde(event) {
+      if (!this.$refs.modal.contains(event.target)) {
+        this.hideModal();
+      }
+    },
     redirectMangaDex() {
       const urlRedirect = 'https://www.mangadex.org';
       window.open(urlRedirect, '_blank');
-      this.confirmReadManga = false;
+      this.hideModal();
     }
   },
 };
@@ -137,14 +150,6 @@ export default {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   font-size: small;
-}
-
-.dropmenu_menu {
-  display: none;
-}
-
-.dropmenu_menu.show {
-  display: block;
 }
 
 .read_modal {
