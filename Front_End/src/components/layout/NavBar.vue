@@ -46,7 +46,7 @@ export default {
     return {
       isGenreOpen: false,
       userInput: "",
-      isModalVisible: true,
+      isModalVisible: false,
     };
   },
   methods: {
