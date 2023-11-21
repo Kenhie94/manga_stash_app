@@ -11,7 +11,9 @@
     <div id="menubar_style" class="d-flex justify-content-between">
       <div class="d-flex align-items-center">
         <router-link to="/list" class="menubar_button d-flex align-items-center px-3">Manga List</router-link>
-        <span @click="showModal" class="read_button d-flex align-items-center px-3">Read</span>
+        <span @click="showModal('https://www.mangadex.org')" class="read_button d-flex align-items-center px-3">Read</span>
+        <span @click="showModal('https://www.crunchyroll.com')" class="read_button d-flex align-items-center px-3">Watch</span>
+        <span @click="showModal('https://store.crunchyroll.com')" class="read_button d-flex align-items-center px-3">Buy</span>
         <router-link to="/about" class="menubar_button d-flex align-items-center px-3">About</router-link>
       </div>
       <div class="d-flex align-items-center">
@@ -32,7 +34,7 @@
         <span class="d-flex p-2">A new tab will open to redirect you to MangaDex</span>
         <div class="d-flex justify-content-end p-1">
           <button class="d-flex m-1" style="background-color: red; color: white;" @click="hideModal">Cancel</button>
-          <button class="d-flex m-1" style="background-color: green; color: white;" @click="redirectMangaDex">Read Manga</button>
+          <button class="d-flex m-1" style="background-color: green; color: white;" @click="redirectUrl">Leave Page</button>
         </div>
       </div>
     </div>
@@ -44,7 +46,8 @@ export default {
   name: "NavBar",
   data() {
     return {
-      userInput: "",
+      userInput: '',
+      urlLink: '',
       isModalVisible: false,
     };
   },
@@ -53,8 +56,9 @@ export default {
       console.log(this.userInput);
       this.$router.push({ name: 'MangaSearch', params: { searchId: this.userInput } });
     },
-    showModal() {
+    showModal(url) {
       this.isModalVisible = !this.isModalVisible
+      this.urlLink = url
     },
     hideModal() {
       this.isModalVisible = false;
@@ -65,9 +69,9 @@ export default {
         this.hideModal();
       }
     },
-    redirectMangaDex() {
-      const urlRedirect = 'https://www.mangadex.org';
-      window.open(urlRedirect, '_blank');
+    redirectUrl() {
+      window.open(this.urlLink, '_blank');
+      this.urlLink = '';
       this.hideModal();
     }
   },
