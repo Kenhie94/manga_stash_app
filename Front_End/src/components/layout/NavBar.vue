@@ -16,7 +16,7 @@
       </div>
       <div class="d-flex align-items-center">
         <div>
-          <button @click="toggleGenre" class="menubar_genre_style mt-1 mb-1 ms-2">All</button>
+          <button class="menubar_genre_style mt-1 mb-1 ms-2">All</button>
         </div>
         <form @submit.prevent="submitUserInput">
           <input v-model="userInput" type="text" class="menubar_search_style mt-1 mb-1 me-2 border round-3"
@@ -29,10 +29,10 @@
     <div v-if="isModalVisible" class="read_modal">
       <div class="d-flex flex-column p-3">
         <h2 class="d-flex p-2">You are about to leave this page</h2>
-        <span class="d-flex p-2">A new tab will open to redirect you to MangaDex to read manga</span>
+        <span class="d-flex p-2">A new tab will open to redirect you to MangaDex</span>
         <div class="d-flex justify-content-end p-1">
-          <button class="d-flex m-1" @click="hideModal">Cancel</button>
-          <button class="d-flex m-1" @click="redirectMangaDex">Read Manga</button>
+          <button class="d-flex m-1" style="background-color: red; color: white;" @click="hideModal">Cancel</button>
+          <button class="d-flex m-1" style="background-color: green; color: white;" @click="redirectMangaDex">Read Manga</button>
         </div>
       </div>
     </div>
@@ -44,15 +44,11 @@ export default {
   name: "NavBar",
   data() {
     return {
-      isGenreOpen: false,
       userInput: "",
       isModalVisible: false,
     };
   },
   methods: {
-    toggleGenre() {
-      this.isGenreOpen = !this.isGenreOpen;
-    },
     submitUserInput() {
       console.log(this.userInput);
       this.$router.push({ name: 'MangaSearch', params: { searchId: this.userInput } });
