@@ -12,6 +12,7 @@
 							<div class="d-flex flex-column">
 								<h1 class="d-flex ps-4">{{ mangaDetails.attributes.title.en }}</h1>
 								<h2 class="d-flex ps-4" v-for="manga in mangaDetails.attributes.altTitles" :key="manga">{{ manga.en }}</h2>
+								<button class="btn btn-success m-4" @click="saveManga">Save to DB</button>
 							</div>
 						</div>
 						<span class="d-flex ps-3">Description: {{ mangaDetails.attributes.description.en }}</span>
@@ -71,6 +72,31 @@ export default {
 			});
 		console.log("Received ID:", this.$route.params.id);
 	},
+	methods: {
+    async saveManga() {
+      try {
+        // Fetch manga details (replace this with your actual API call)
+        const mangaDetails = await this.fetchMangaDetails();
+
+        // Send manga details to your backend
+        await axios.post('http://localhost:3000/api/manga', mangaDetails);
+
+        alert('Manga details saved successfully');
+      } catch (error) {
+        console.error('Error saving manga details:', error);
+        alert('Failed to save manga details');
+      }
+    },
+    async fetchMangaDetails() {
+      // Implement your logic to fetch manga details here
+      // Example:
+      return {
+        type: 'Manga Title',
+        title: 'Manga Author',
+        // Add other details here
+      };
+    },
+  },
 };
 </script>
 

@@ -57,12 +57,8 @@ const MangaDB = mongoose.model("MangaDB", mangaSchema);
 
 // Function to fetch data from an API and store it in your database
 async function fetchDataAndStore() {
-  const mangaID = [
-    "c52b2ce3-7f95-469c-96b0-479524fb7a1a",
-    "1ee97895-4796-4bcf-bcd1-5ef99c011f8b",
-    "882b1e22-ac83-4613-b8f1-7c48138fa584",
-    "6b958848-c885-4735-9201-12ee77abcb3c",
-  ];
+  const mangaID = `${searchId}`
+
   for (let i = 0; i < mangaID.length; i++) {
     try {
       const response = await axios.get(`https://api.mangadex.org/manga/${mangaID[i]}`);
@@ -95,4 +91,4 @@ async function fetchDataAndStore() {
 }
 
 // Call the function to fetch and store data
-fetchDataAndStore();
+module.export = fetchDataAndStore();
