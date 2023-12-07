@@ -68,9 +68,10 @@ const MangaDB = mongoose.model("MangaDB", mangaSchema);
 app.use(bodyParser.json());
 
 // Endpoint to save manga details
-app.post("/api/manga", async (req, res) => {
+app.post('Back_End/api/storeDB.js', async (req, res) => {
+  const receivedID = req.body;
 	try {
-		const response = await axios.get(`https://api.mangadex.org/manga/${mangaID[i]}`);
+		const response = await axios.get(`https://api.mangadex.org/manga/${receivedID}`);
 		const apiData = response.data.data; // Assuming the data is in an appropriate format
 		console.log("API DATA:", apiData);
 

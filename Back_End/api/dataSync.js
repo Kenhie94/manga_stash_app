@@ -57,36 +57,33 @@ const MangaDB = mongoose.model("MangaDB", mangaSchema);
 
 // Function to fetch data from an API and store it in your database
 async function fetchDataAndStore() {
-  const mangaID = `${searchId}`
+  const mangaID = `${searchId}`;
+  try {
+    const response = await axios.get(`https://api.mangadex.org/manga/${coverUrlId}`);
+    const apiData = response.data.data; // Assuming the data is in an appropriate format
+    console.log("API DATA:", apiData);
 
-  for (let i = 0; i < mangaID.length; i++) {
-    try {
-      const response = await axios.get(`https://api.mangadex.org/manga/${mangaID[i]}`);
-      const apiData = response.data.data; // Assuming the data is in an appropriate format
-      console.log("API DATA:", apiData);
+    // Process the data and create new documents in your Atlas database
+    const newData = new MangaDB({
+      type: apiData.type,
+      title: apiData.attributes.title.en,
+      altTitles: apiData.attributes.altTitles,
+      description: apiData.attributes.description,
+      originalLanguage: apiData.attributes.originalLanguage,
+      lastVolume: apiData.attributes.lastVolume,
+      lastChapter: apiData.attributes.lastChapter,
+      publicationDemographic: apiData.attributes.publicationDemographic,
+      status: apiData.attributes.status,
+      year: apiData.attributes.year,
+      contentRating: apiData.attributes.contentRating,
+      tags: apiData.attributes.tags,
+      links: apiData.attributes.links,
+    });
 
-      // Process the data and create new documents in your Atlas database
-      const newData = new MangaDB({
-        type: apiData.type,
-        title: apiData.attributes.title.en,
-        altTitles: apiData.attributes.altTitles,
-        description: apiData.attributes.description,
-        originalLanguage: apiData.attributes.originalLanguage,
-        lastVolume: apiData.attributes.lastVolume,
-        lastChapter: apiData.attributes.lastChapter,
-        publicationDemographic: apiData.attributes.publicationDemographic,
-        status: apiData.attributes.status,
-        year: apiData.attributes.year,
-        contentRating: apiData.attributes.contentRating,
-        tags: apiData.attributes.tags,
-        links: apiData.attributes.links,
-      });
-
-      const savedData = await newData.save(); // Save the new document to your database
-      console.log("Data stored in your database.", savedData);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    const savedData = await newData.save(); // Save the new document to your database
+    console.log("Data stored in your database.", savedData);
+  } catch (error) {
+    console.error("Error:", error);
   }
 }
 
