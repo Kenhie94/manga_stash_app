@@ -6,12 +6,7 @@
       </header>
       <div id="manga_stash_style">
         <body class="app_style_dimension mx-auto">
-          <ul class="d-flex justify-content-center">
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-          </ul>
+          <MangaQuickView />
         </body>
       </div>
     </div>
@@ -26,12 +21,14 @@
 <script>
 import NavBar from "../components/layout/NavBar.vue";
 import FooterBar from "@/components/layout/FooterBar.vue";
+import MangaQuickView from "@/components/MangaQuickView.vue";
 
 export default {
   name: 'MangaListPage',
   components: {
     NavBar,
     FooterBar,
+    MangaQuickView,
   },
   data() {
     return {
