@@ -1,14 +1,16 @@
 <template>
-  <div class="quickview-manga">
-    <div class="quickview-img">
-    </div> <!-- <img class="d-flex" src="../assets/images/Haikyuu.jpg" alt=""> -->
-    <h2 class="quickview-title">Haikyuu</h2>
+  <div class="quickview-img d-flex align-items-end" :style="{background: 'url(' + image + ')'}">
+    <h2 class="quickview-title mb-0">{{ title }}</h2>
   </div>
 </template>
 
 <script>
 export default {
   name: 'MangaQuickView',
+  props: {
+    title: String,
+    image: String
+  },
   data() {
     return {
       // Your data properties here
@@ -21,18 +23,15 @@ export default {
 </script>
 
 <style scoped>
-/* Your component-specific styles here */
-.quickview-manga {
-  height: 100vh;
-}
 
 .quickview-img {
-  background: url("../assets/images/Haikyuu.jpg") no-repeat center center fixed;
+  /* background: url("../assets/images/Haikyuu.jpg"); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   height: 100%;
+  width: 100%;
 }
 
 .quickview-title {

@@ -8,7 +8,8 @@ import HomePage from './views/HomePage.vue';
 import MangaListPage from './views/MangaListPage.vue'
 import AboutPage from './views/AboutPage.vue'
 import MangaSearchPage from './views/MangaSearchPage';
-import MangaDetailPage from './views/MangaDetailPage.vue'
+import MangaDetailPage from './views/MangaDetailPage.vue';
+import TestingPage from './views/TestingPage.vue'
 
 // *Routes*
 // Connecting routing pages
@@ -18,6 +19,7 @@ const routes = [
   { path: '/about', component: AboutPage},
   { path: '/manga/:searchId', name: 'MangaSearch', component: MangaSearchPage },
   { path: '/manga/:id', name: 'MangaDetail', component: MangaDetailPage },
+  { path: '/test', name: 'TestingPage', component: TestingPage },
 ];
 
 const router = createRouter({
