@@ -1,6 +1,6 @@
 <template>
   <div class="test d-flex">
-    <div v-for="manga in mangaArray" :key="manga" class="cont">
+    <div v-for="manga in mangaArray" :key="manga" class="cont" p-4>
       <MangaQuickView :title="manga.title" :image="manga.image" />
     </div>
   </div>
@@ -14,9 +14,9 @@ export default {
     return {
       // Your data properties here
       mangaArray: [
-        {title: "Haikyuu", image: "../assets/images/Haikyuu.jpg"},
-        {title: "Spy_x_Family", image: "../assets/images/Spy_x_Family.jpg"},
-        {title: "Hunter_x_Hunter", image: "../assets/images/Hunter_x_Hunter.jpg"},
+        {title: "Haikyuu", image: "assets/images/Haikyuu.jpg"},
+        {title: "Spy x Family", image: "assets/images/Spy_x_Family.jpg"},
+        {title: "Hunter x Hunter", image: "assets/images/Hunter_x_Hunter.jpg"},
       ]
     };
   },

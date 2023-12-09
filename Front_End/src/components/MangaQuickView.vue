@@ -1,5 +1,5 @@
 <template>
-  <div class="quickview-img d-flex align-items-end" :style="{background: 'url(' + image + ')'}">
+  <div class="quickview-img d-flex align-items-end" :style="{ background: 'url(' + image + ')' }">
     <h2 class="quickview-title mb-0">{{ title }}</h2>
   </div>
 </template>
@@ -29,13 +29,17 @@ export default {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover !important; 
   height: 100%;
   width: 100%;
 }
 
 .quickview-title {
-  color: white;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  color: #e0e0e0;
+  text-shadow: rgba(0,0,0,.8) 1px 1px 0;
+}
+
+h2 {
+  font-size: 20px;
 }
 </style>
