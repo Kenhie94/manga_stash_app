@@ -1,6 +1,6 @@
 <template>
   <div class="quickview-img d-flex align-items-end" :style="{ background: 'url(' + image + ')' }">
-    <h2 class="quickview-title mb-0">{{ title }}</h2>
+    <h2 class="quickview-title m-1">{{ title }}</h2>
   </div>
 </template>
 
@@ -23,9 +23,10 @@ export default {
 </script>
 
 <style scoped>
-
+h2 {
+  font-size: 20px;
+}
 .quickview-img {
-  /* background: url("../assets/images/Haikyuu.jpg"); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -33,13 +34,9 @@ export default {
   height: 100%;
   width: 100%;
 }
-
 .quickview-title {
   color: #e0e0e0;
-  text-shadow: rgba(0,0,0,.8) 1px 1px 0;
+  
 }
 
-h2 {
-  font-size: 20px;
-}
 </style>

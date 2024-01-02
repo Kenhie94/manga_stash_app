@@ -14,9 +14,9 @@ export default {
     return {
       // Your data properties here
       mangaArray: [
-        {title: "Haikyuu", image: "assets/images/Haikyuu.jpg"},
-        {title: "Spy x Family", image: "assets/images/Spy_x_Family.jpg"},
-        {title: "Hunter x Hunter", image: "assets/images/Hunter_x_Hunter.jpg"},
+        {title: "Haikyuu", image: "https://upload.wikimedia.org/wikipedia/en/6/6b/Haiky%C5%AB_Volume_1.jpg"},
+        {title: "Spy x Family", image: "https://upload.wikimedia.org/wikipedia/en/5/51/Spy_Family_vol_1.jpg"},
+        {title: "Hunter x Hunter", image: "https://upload.wikimedia.org/wikipedia/en/e/e8/Hunter_%C3%97_Hunter_vol._1.png"},
       ]
     };
   },
