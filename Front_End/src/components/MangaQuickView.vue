@@ -35,8 +35,12 @@ h2 {
   width: 100%;
 }
 .quickview-title {
-  color: #e0e0e0;
-  
+  color: white;
+  text-shadow: 
+  -1px -1px 0 black,
+  1px -1px 0 black,
+  -1px 1px 0 black,
+  1px 1px 0 black;
 }
 
 </style>
