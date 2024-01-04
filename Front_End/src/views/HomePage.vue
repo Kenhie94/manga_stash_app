@@ -6,12 +6,11 @@
 			</header>
 			<div id="manga_stash_style">
 				<body class="app_style_dimension mx-auto">
+          <span>
+            <h1>Welcome to Manga Stash!</h1>
+          </span>
 					<span>
 						<MiniMangaDisplayVue />
-					</span>
-					<h1>Data from MangaDex servers</h1>
-					<span>
-						<!-- <MangaDexService /> -->
 					</span>
 				</body>
 			</div>
