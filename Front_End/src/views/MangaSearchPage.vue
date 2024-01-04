@@ -47,6 +47,24 @@ export default {
 			return text.charAt(0).toUpperCase() + text.slice(1);
 		},
 	},
+  watch: {
+    '$route.params.searchId': function(newSearchId) {
+      const apiUrl = "https://api.mangadex.org/manga/";
+
+      axios.get(apiUrl, {
+          params: {
+              title: newSearchId,
+          },
+      })
+      .then(response => {
+          this.mangaDetails = response.data.data;
+          console.log("Manga Details:", this.mangaDetails);
+      })
+      .catch(error => {
+          console.log("Error fetching manga list:", error);
+      });
+    }
+  },
 	mounted() {
 		const apiUrl = "https://api.mangadex.org/manga/";
 		const searchTitle = this.$route.params.searchId;

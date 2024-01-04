@@ -55,6 +55,7 @@ export default {
     submitUserInput() {
       console.log(this.userInput);
       this.$router.push({ name: 'MangaSearch', params: { searchId: this.userInput } });
+      this.userInput = '';
     },
     showModal(url) {
       this.isModalVisible = !this.isModalVisible
