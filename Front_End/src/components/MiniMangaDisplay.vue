@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="d-flex border border-danger">
-      <div class="p-2">
+    <div>
+      <div>
         <span><img src="../assets/images/Spy_x_Family.jpg" alt="Spy x Family" /></span>
         <span><img src="../assets/images/Yuru_Camp.jpg" alt="Yuru Camp" /></span>
         <span><img src="../assets/images/Haikyuu.jpg" alt="Haikyuu" /></span>
