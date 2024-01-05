@@ -6,7 +6,8 @@
 			</header>
 			<div id="manga_stash_style">
 				<body class="app_style_dimension mx-auto">
-					<h1 class="d-flex justify-content-center">Related Search of: {{ upperCase(searchTitle) }}</h1>
+					<h1 v-if="mangaTitleAvailable" class="d-flex justify-content-center">Related Search of: {{ upperCase(newSearchTitle) }}</h1>
+          <h1 v-else class="d-flex justify-content-center">Related Search of: {{ upperCase(searchTitle) }}</h1>
 					<div v-for="manga in mangaDetails" :key="manga" class="d-flex flex-column border border-success">
 						<router-link :to="{ name: 'MangaDetail', params: { id: manga.id } }">
 							<h3 class="d-flex">{{ manga.attributes.title.en }}</h3>
@@ -40,6 +41,8 @@ export default {
 		return {
 			mangaDetails: null,
 			searchTitle: "",
+      newSearchId: "",
+      newSearchTitle: null,
 		};
 	},
 	methods: {
@@ -59,6 +62,7 @@ export default {
       .then(response => {
           this.mangaDetails = response.data.data;
           console.log("Manga Details:", this.mangaDetails);
+          console.log("New Search ID")
       })
       .catch(error => {
           console.log("Error fetching manga list:", error);
